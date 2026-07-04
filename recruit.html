@@ -311,14 +311,46 @@
   </div>
 </section>
 
-<section style="background:var(--black); padding:100px 72px; text-align:center;">
-  <h2 style="font-family:'Noto Serif JP',serif; font-size:clamp(22px,3vw,36px); font-weight:200; letter-spacing:0.1em; color:#fff; margin-bottom:20px;" data-reveal>まずは、気軽にご連絡ください。</h2>
-  <p style="font-size:14px; line-height:2.2; color:rgba(255,255,255,0.5); letter-spacing:0.08em; margin-bottom:48px;" data-reveal>「話だけ聞きたい」「見学だけしたい」も大歓迎です。<br>経験・ブランクは問いません。</p>
-  <a href="contact.html" style="display:inline-block; padding:16px 56px; background:var(--green); color:#fff; font-size:12px; letter-spacing:0.2em; text-decoration:none; transition:background 0.3s, transform 0.2s;" data-reveal
-    onmouseover="this.style.background='#5E8A6E';this.style.transform='translateY(-2px)'"
-    onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'">
-    採用についてお問い合わせする
-  </a>
+<section style="background:var(--off-white); padding:100px 72px; border-top:1px solid var(--gray-light);">
+  <div style="max-width:680px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px;" data-reveal>
+      <span style="font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.4em; text-transform:uppercase; color:var(--green); display:block; margin-bottom:14px;">Apply</span>
+      <h2 style="font-family:'Noto Serif JP',serif; font-size:clamp(22px,2.8vw,32px); font-weight:200; letter-spacing:0.1em; color:var(--black); margin-bottom:16px;">応募・お問い合わせ</h2>
+      <p style="font-size:14px; line-height:2.2; color:var(--gray-mid); letter-spacing:0.05em;">「話だけ聞きたい」「見学だけしたい」も大歓迎です。<br>経験・ブランクは問いません。お気軽にどうぞ。</p>
+    </div>
+
+    <div id="recruitForm" data-reveal>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-size:12px; letter-spacing:0.12em; color:#444;">お名前<span style="color:var(--green); margin-left:4px; font-size:10px;">必須</span></label>
+          <input type="text" id="r_name" placeholder="山田 太郎" style="width:100%; padding:14px 16px; border:1px solid var(--gray-light); background:var(--white); font-family:'Noto Sans JP',sans-serif; font-size:14px; font-weight:300; color:var(--black); outline:none; transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='var(--gray-light)'">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-size:12px; letter-spacing:0.12em; color:#444;">電話番号またはメールアドレス<span style="color:var(--green); margin-left:4px; font-size:10px;">必須</span></label>
+          <input type="text" id="r_contact" placeholder="090-0000-0000 または example@mail.com" style="width:100%; padding:14px 16px; border:1px solid var(--gray-light); background:var(--white); font-family:'Noto Sans JP',sans-serif; font-size:14px; font-weight:300; color:var(--black); outline:none; transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='var(--gray-light)'">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-size:12px; letter-spacing:0.12em; color:#444;">介護支援専門員証の有無</label>
+          <select id="r_license" style="width:100%; padding:14px 16px; border:1px solid var(--gray-light); background:var(--white); font-family:'Noto Sans JP',sans-serif; font-size:14px; font-weight:300; color:var(--black); outline:none; -webkit-appearance:none; appearance:none; cursor:pointer;">
+            <option value="">選択してください</option>
+            <option>あり（有効期限内）</option>
+            <option>あり（更新手続き中）</option>
+            <option>なし・取得予定</option>
+          </select>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-size:12px; letter-spacing:0.12em; color:#444;">メッセージ・ご質問</label>
+          <textarea id="r_message" placeholder="経験年数、希望する働き方、質問など何でもお書きください。" style="width:100%; padding:14px 16px; border:1px solid var(--gray-light); background:var(--white); font-family:'Noto Sans JP',sans-serif; font-size:14px; font-weight:300; color:var(--black); outline:none; resize:vertical; min-height:120px; line-height:1.9; transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='var(--gray-light)'"></textarea>
+        </div>
+        <button onclick="submitRecruit()" id="recruitBtn" style="padding:16px; background:var(--green); color:#fff; border:none; cursor:pointer; font-family:'Noto Sans JP',sans-serif; font-size:12px; letter-spacing:0.2em; transition:background 0.3s; width:100%;">応募・お問い合わせする</button>
+      </div>
+    </div>
+
+    <div id="recruitSuccess" style="display:none; text-align:center; padding:56px 24px; background:var(--green-pale);">
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:200; letter-spacing:0.1em; margin-bottom:16px; color:var(--green);">送信が完了しました</h3>
+      <p style="font-size:14px; line-height:2.2; color:#555;">お問い合わせありがとうございます。<br>内容を確認の上、担当者よりご連絡いたします。</p>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -366,6 +398,43 @@
     });
   }, { threshold: 0.1 });
   revealEls.forEach(el => revealObs.observe(el));
+  async function submitRecruit() {
+    const name = document.getElementById('r_name').value;
+    const contact = document.getElementById('r_contact').value;
+    if (!name || !contact) { alert('お名前と連絡先をご入力ください。'); return; }
+
+    const btn = document.getElementById('recruitBtn');
+    btn.textContent = '送信中...';
+    btn.disabled = true;
+
+    const data = {
+      name: name,
+      contact: contact,
+      license: document.getElementById('r_license').value,
+      message: document.getElementById('r_message').value
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/xvzjdnbr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        document.getElementById('recruitForm').style.display = 'none';
+        document.getElementById('recruitSuccess').style.display = 'block';
+      } else {
+        alert('送信に失敗しました。お手数ですがお電話にてご連絡ください。');
+        btn.textContent = '応募・お問い合わせする';
+        btn.disabled = false;
+      }
+    } catch(e) {
+      alert('通信エラーが発生しました。お手数ですがお電話にてご連絡ください。');
+      btn.textContent = '応募・お問い合わせする';
+      btn.disabled = false;
+    }
+  }
+
   function toggleMenu() {
     document.getElementById('navDrawer').classList.toggle('open');
     document.getElementById('navOverlay').classList.toggle('open');
